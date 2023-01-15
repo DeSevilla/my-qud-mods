@@ -1,0 +1,22 @@
+<objects>
+    <!-- base statues to be inherited -->
+    <object Name="Statue" Load="Merge">
+        <tag Name="Animatable"/>
+        <tag Name="BodyType" Value="Humanoid"/>
+    </object>
+    <object Name="Random Statue" Load="Merge">
+        <tag Name="Animatable"/>
+        <tag Name="BodyType" Value="Humanoid"/>
+    </object>
+    <object Name="SultanShrine" Load="Merge">
+        <tag Name="Animatable"/>
+        <tag Name="BodyType" Value="Humanoid"/>
+    </object>
+    <!-- specific statues --> 
+    <object Name="ImplantedEaterStatue" Load="Merge">
+        <tag Name="BodyType" Value="Echinoid"/>
+    </object>
+    <object Name="Keresh Statue" Load="Merge">
+        <tag Name="BodyType" Value="Quadruped"/>
+    </object>
+</objects>
