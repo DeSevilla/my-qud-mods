@@ -1,6 +1,6 @@
 This is a mod for Caves of Qud that makes statues animatable by all standard means (Spray-a-Brain, nano-neuro animators).
 Dynamic statues of creatures have the anatomy of their creature type, while predefined statues have the best anatomy I
-can assign based on their appearances and descriptions.
+can assign based on their appearances and descriptions. The easiest way to install it is from [the Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2918604974).
 
 Known limitations:
 
