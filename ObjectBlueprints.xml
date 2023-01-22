@@ -3,20 +3,28 @@
     <object Name="Statue" Load="Merge">
         <tag Name="Animatable"/>
         <tag Name="BodyType" Value="Humanoid"/>
+        <tag Name="BodyCategory" Value="Stone"/>
     </object>
     <object Name="Random Statue" Load="Merge">
         <tag Name="Animatable"/>
         <tag Name="BodyType" Value="Humanoid"/>
+        <tag Name="BodyCategory" Value="Stone"/>
     </object>
     <object Name="SultanShrine" Load="Merge">
         <tag Name="Animatable"/>
         <tag Name="BodyType" Value="Humanoid"/>
+        <tag Name="BodyCategory" Value="Stone"/>
     </object>
-    <!-- specific statues --> 
+    <!-- specific statues -->
+    <object Name="Oboroqoru Statue" Load="Merge">
+        <tag Name="BodyType" Value="SixArmedHumanoid"/>
+        <tag Name="BodyCategory" Value="Stone"/>
+    </object>
     <object Name="ImplantedEaterStatue" Load="Merge">
-        <tag Name="BodyType" Value="Echinoid"/>
+        <tag Name="BodyType" Value="Eroded"/>
     </object>
     <object Name="Keresh Statue" Load="Merge">
         <tag Name="BodyType" Value="Quadruped"/>
+        <tag Name="BodyCategory" Value="Stone"/>
     </object>
 </objects>

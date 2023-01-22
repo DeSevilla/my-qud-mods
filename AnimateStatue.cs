@@ -5,10 +5,9 @@ using System.Collections.Generic;
 using XRL;
 using XRL.World;
 using XRL.World.Parts;
+using XRL.World.Anatomy;
 
 namespace AnimateStatue.HarmonyPatches {
-
-
 
     [HarmonyPatch(typeof(RandomStatue), nameof(RandomStatue.SetCreature))]
     class RandomStatuePatch {
@@ -16,6 +15,9 @@ namespace AnimateStatue.HarmonyPatches {
         static void Postfix(RandomStatue __instance, GameObject gameObject) {
             __instance.ParentObject.SetStringProperty("Animatable", "Yes");
             __instance.ParentObject.SetStringProperty("BodyType", gameObject.Body.Anatomy);
+            __instance.ParentObject.SetStringProperty("BodyCategory", "Stone"); //all random statues are currently stone
+            //we could make the body category depend on the material of the statue but we'd need to manually define the mapping
+            //so we won't for now. if we need to add bronze statues or something we can do it then
         }
     }
 
@@ -39,5 +41,14 @@ namespace AnimateStatue.HarmonyPatches {
                 }
             }
         }
+
+        [HarmonyPostfix]
+        static void Postfix(GameObject frankenObject) {
+            var cat = frankenObject.GetTagOrStringProperty("BodyCategory", "");
+            if (cat != "") {
+                var code = BodyPartCategory.GetCode(cat);
+                frankenObject.Body.CategorizeAll(code);
+            }
+       }
     }
 }
