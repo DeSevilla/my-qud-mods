@@ -1,0 +1,41 @@
+<bodies>
+  <anatomies>
+      <anatomy Name="AnimateStatue_SixArmedHumanoid">
+        <part Type="Head">
+          <part Type="Face" />
+        </part>
+        <part Type="Back" />
+        <part Type="Arm" Laterality="Upper Right">
+          <part Type="Hand" Laterality="Upper Right" SupportsDependent="Upper Hands" />
+        </part>
+        <part Type="Arm" Laterality="Upper Left">
+          <part Type="Hand" Laterality="Upper Left" SupportsDependent="Upper Hands" />
+        </part>
+        <part Type="Arm" Laterality="Right">
+          <part Type="Hand" Laterality="Right" SupportsDependent="Hands" />
+        </part>
+        <part Type="Arm" Laterality="Left">
+          <part Type="Hand" Laterality="Left" SupportsDependent="Hands" />
+        </part>
+        <part Type="Arm" Laterality="Lower Right">
+          <part Type="Hand" Laterality="Lower Right" SupportsDependent="Lower Hands" />
+        </part>
+        <part Type="Arm" Laterality="Lower Left">
+          <part Type="Hand" Laterality="Lower Left" SupportsDependent="Lower Hands" />
+        </part>
+        <part Type="Missile Weapon" Laterality="Right" />
+        <part Type="Missile Weapon" Laterality="Left" />
+        <part Type="Hands" Laterality="Upper" DependsOn="Upper Hands" />
+        <part Type="Hands" DependsOn="Hands" />
+        <part Type="Hands" Laterality="Lower" DependsOn="Lower Hands" />
+        <part Type="Feet" />
+      </anatomy>
+      <anatomy Name="AnimateStatue_Eroded" category="Stone">
+        <part Type="Small Crack" Laterality="Upper" />
+        <part Type="Small Crack" Laterality="Lower" />
+        <part Type="Missile Weapon" Laterality="Right" />
+        <part Type="Missile Weapon" Laterality="Left" />
+        <part Type="Foundation" />
+      </anatomy>
+  </anatomies>
+</bodies>

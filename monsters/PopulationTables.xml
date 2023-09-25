@@ -1,0 +1,43 @@
+<populations>
+    <population Name="Tier8CavePopulation" Load="Merge">
+        <group Name="Contents" Load="Merge">
+            <group Name="Creatures" Load="Merge">
+                <object Weight="3" Number="1" Blueprint="IlluminatiSwag_Monsters_ThingInTheDark" />
+                <object Weight="5" Number="1" Blueprint="IlluminatiSwag_Monsters_SightlessProphet" />
+                <object Weight="1" Number="1" Blueprint="IlluminatiSwag_Monsters_GirshKraken" />
+            </group>
+        </group>
+    </population>
+    <population Name="Tier7CavePopulation" Load="Merge">
+        <group Name="Contents" Load="Merge">
+            <group Name="Creatures" Load="Merge">
+                <object Weight="1" Number="1" Blueprint="IlluminatiSwag_Monsters_ThingInTheDark" />
+                <object Weight="1" Number="1" Blueprint="IlluminatiSwag_Monsters_GirshKraken" />
+                <object Weight="5" Number="1-2" Blueprint="IlluminatiSwag_Monsters_PrimordialJell" />
+            </group>
+        </group>
+    </population>
+    <population Name="Tier6CavePopulation" Load="Merge">
+        <group Name="Contents" Load="Merge">
+            <group Name="Creatures" Load="Merge">
+                <object Weight="3" Number="1-2" Blueprint="IlluminatiSwag_Monsters_PitBurrower" />
+                <object Weight="2" Number="1-2" Blueprint="IlluminatiSwag_Monsters_PrimordialJell" />
+            </group>
+        </group>
+    </population>
+    <population Name="Tier5CaveCreatures" Load="Merge">
+        <group Name="Creatures" Load="Merge">
+            <object Weight="2" Number="1-2" Blueprint="IlluminatiSwag_Monsters_PitBurrower" />
+        </group>
+    </population>
+    <population Name="IlluminatiSwag_Monsters_GirshKrakenOffspring">
+        <object Number="1" Blueprint="IlluminatiSwag_Monsters_KrakenPool"/>
+        <group Name="Offspring" Chance="80" Style="pickone">
+            <object Weight="10" Number="2-3" Blueprint="Girshling"/>
+            <object Weight="10" Number="2-3" Blueprint="Agolmaggot"/>
+            <object Weight="5" Number="1" Blueprint="Agolfly"/>
+            <object Weight="5" Number="1" Blueprint="Agolzvuv"/>
+            <object Weight="5" Number="1" Blueprint="Girshworm"/>
+        </group>
+    </population>
+</populations>

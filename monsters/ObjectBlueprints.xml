@@ -1,0 +1,144 @@
+<objects>
+    <object Name="IlluminatiSwag_Monsters_ThingInTheDark" Inherits="BaseInsect">
+        <part Name="Render" DisplayName="{{black|thing in the dark}}" RenderString="D" ColorString="&amp;K" Tile="creatures/sw_bulb_weird1.bmp" DetailColor="y" />
+        <stat Name="AV" Value="15" />
+        <stat Name="DV" Value="5" />
+        <stat Name="Level" Value="40" />
+        <stat Name="Hitpoints" Value="600" />
+        <stat Name="Ego" Value="24" />
+        <part Name="Brain" Hostile="true" Factions="Strangers-100,Girsh-100" />
+        <part Name="MentalShield" />
+        <inventoryobject Blueprint="Agolzvuv_Foreleg_Barbs" Number="2" />
+        <inventoryobject Blueprint="IlluminatiSwag_Monsters_TITD_Tentacle" Number="2" />
+        <part Name="Description" Short="Beneath the cloak of merciful shadow skulks a specimen of unparalleled hideousness. The eye refuses to grasp =pronouns.subjective=; the mind fails to encompass =pronouns.subjective=; the limbic system is washed away by a geologic eon of primal terror." />
+        <skill Name="LongBlades" />
+        <skill Name="LongBladesProficiency" />
+        <skill Name="LongBladesLunge" />
+        <skill Name="LongBladesSwipe" />
+        <skill Name="LongBladesImprovedAggressiveStance" />
+        <skill Name="LongBladesImprovedDefensiveStance" />
+        <skill Name="Dual_Wield" />
+        <skill Name="Dual_Wield_Offhand_Strikes" />
+        <skill Name="Dual_Wield_Ambidexterity" />
+        <skill Name="Dual_Wield_Two_Weapon_Fighting" />
+        <skill Name="Persuasion_Intimidate" />
+        <property Name="Role" Value="Brute" />
+        <part Name="Blackout" Radius="5" />
+        <part Name="IlluminatiSwag_Monsters_Terrifying" />
+    </object>
+    <object Name="IlluminatiSwag_Monsters_TITD_Tentacle" Inherits="NaturalWeapon">
+        <part Name="Render" DisplayName="tentacle"/>
+        <part Name="MeleeWeapon" BaseDamage="2d7" Skill="LongBlades" Stat="Strength" Slot="Arm"/>
+        <part Name="LatchesOn" InitialSaveTarget="27" InitialSaveStat="Agility" InitialSaveDifficultyStat="Agility" MoveSaveTarget="25" MoveSaveStat="Strength" MoveSaveDifficultyStat="Strength" BreakSaveTarget="25" BreakSaveStat="Strength" BreakSaveDifficultyStat="Strength" Duration="3d4" AutoAttackOnMove="false" AutoAttackOnMoveAway="false" AutoAttackPerTurn="true" BloodSpatterOnLatch="true" />
+        <part Name="ModRazored" Chance="4" />
+    </object>
+    <object Name="IlluminatiSwag_Monsters_GirshKraken" Inherits="BaseWorm">
+        <part Name="Render" DisplayName="girsh kraken" Tile="Creatures/sw_kraken.bmp" RenderString="W" ColorString="&amp;m"/>
+        <part Name="Description" Short="A roiling mountain of twisted flesh glistens and churns with the unbound energy of the Gyre. Countless offspring chew their way out of =pronouns.possessive= putrid innards, which knit together even as they're torn open again."/>
+        <part Name="Physics" Weight="40000"/>
+        <part Name="Brain" Hostile="false" Factions="Girsh-100"/>
+        <part Name="MentalShield"/>
+        <stat Name="AV" Value="18"/>
+        <stat Name="DV" Value="-10"/>
+        <stat Name="Strength" Boost="6"/>
+        <stat Name="Hitpoints" Value="2000"/>
+        <stat Name="Level" Value="45"/>
+        <mutation Name="Regeneration" Level="6"/>
+        <mutation Name="GasGeneration" Level="6" GasObject="PoisonGas" />
+        <part Name="Consumer"/>
+        <part Name="SlowDangerousMovement" LinkedToConsumer="true" PrepMessageSelf="You widen your mouth in preparation to move =dirward=." PrepMessageOther="=subject.T's= mouth widens!" />
+        <part Name="AIWanderingJuggernaut"/>
+        <part Name="LeavesTrail" TrailChance="75" TrailPopTable="IlluminatiSwag_Monsters_GirshKrakenOffspring" OnEnter="false"/>
+        <tag Name="NoCure"/>
+        <property Name="Role" Value="Brute"/>
+        <tag Name="Colossal"/>
+        <inventoryobject Blueprint="Saltwurm_Crush" Number="1"/>
+    </object>
+    <object Name="IlluminatiSwag_Monsters_SightlessProphet" Inherits="Arch Dervish of the Sightless Way">
+        <part Name="Render" DisplayName="prophet of the Sightless Way" Tile="Creatures/sw_stareye_esper.bmp" ColorString="&amp;r" DetailColor="C" Occluding="false"/>
+        <part Name="Description" Short="=pronouns.Possessive= near-skeletal limbs trace arcs of unerring grace and precision, and the piercing, lightless glow of =pronouns.possessive= gaze shines through =pronouns.possessive= ornately embroidered blindfold. =pronouns.Subjective= =verb:have:afterpronoun= followed the Sightless Way beyond the limits of mere possibility, and spacetime constrains =pronouns.objective= no more."/>
+        <stat Name="Ego" Boost="7"/>
+        <stat Name="Level" Value="42"/>
+        <stat Name="Agility" Boost="6"/>
+        <mutation Name="Precognition" Level="7"/>
+        <part Name="RandomMutations" Mental="3-4" Physical="0" MentalLevel="2-5" />
+        <part Name="Preacher" Book="Illuminatiwag_Monsters_Prophet" Prefix="The prophet says, &amp;W'" Frozen="The prophet mumbles inaudibly, encased in ice." inOrder="false" ChatWait="200" />
+    </object>
+    <object Name="IlluminatiSwag_Monsters_PitBurrower" Inherits="BaseWorm">
+        <part Name="Render" DisplayName="blightcrawler" Tile="Creatures/sw_snakelite.bmp" RenderString="w" ColorString="&amp;y" DetailColor="r"/>
+        <part Name="Description" Short="A mouth of grinding gears and a jagged chrome carapace tear through solid stone like chalk, while rear vents spew thick plumes of noxious byproducts. Long ages have passed since the Eaters of Earth abandoned these caverns, but in the gnawed depths their worm dieth not."/>
+        <part Name="Robot"/>
+        <stat Name="Level" Value="30"/>
+        <stat Name="AV" Value="12"/>
+        <stat Name="Hitpoints" Value="100"/>
+        <inventoryobject Blueprint="IlluminatiSwag_Monsters_PitBurrower_Crush" Number="1"/>
+        <property Name="Role" Value="Controller" />
+        <mutation Name="Burrowing" Level="5"/>
+        <part Name="LeaveTrailWhileHasEffect" TrailObject="IlluminatiSwag_Monsters_Miasma500" Effect="Burrowed"/>
+        <tag Name="Restless"/>
+        <tag Name="NoCure"/>
+        <tag Name="SeveredHeadBlueprint" Value="RobotHead8" />
+        <tag Name="SeveredTailBlueprint" Value="RobotTail" />
+        <stag Name="HardMaterial" Value="casing" />
+        <stat Name="ElectricResistance" Value="-50" />
+        <stat Name="HeatResistance" Value="25" />
+        <stat Name="ColdResistance" Value="25" />
+        <intproperty Name="Inorganic" Value="1" />
+        <intproperty Name="Bleeds" Value="1" />
+        <tag Name="BleedLiquid" Value="oil-1000" />
+        <tag Name="BleedColor" Value="&amp;K" />
+        <tag Name="BleedPrefix" Value="&amp;Koily" />
+        <tag Name="DeathSounds" Value="death_robot_1,death_robot_2,death_robot_3" />
+        <tag Name="NonMutant" />
+    </object>
+    <object Name="IlluminatiSwag_Monsters_PitBurrower_Crush" Inherits="NaturalWeapon">
+        <part Name="Render" DisplayName="{{spiked|spiked}} bands" />
+        <part Name="MeleeWeapon" BaseDamage="4d4" Skill="Cudgel" Stat="Strength" Slot="Body" />
+        <part Name="BleedingOnHit" Amount="2d2" SaveTarget="25" Stack="true"/>
+        <tag Name="Gender" Value="plural"/>
+    </object>
+    <object Name="IlluminatiSwag_Monsters_Miasma500" Inherits="Miasma">
+        <part Name="Gas" Density="500"/>
+    </object>
+    <!-- <object Name="IlluminatiSwag_Monsters_PitBurrower_Pit" Inherits="StairsDown">
+        <part Name="Physics" IsReal="false"/>
+        <part Name="Render" DetailColor="k" DisplayName="open air" ColorString="&amp;m^k" RenderString=" " TileColor="&amp;m^k"/>
+        <removepart Name="StairHighlight" />
+        <tag Name="OverlayColor" Value="&amp;k^k" />
+        <part Name="Description" Short="Darkness yawns beneath a gash chewed in the earth." />
+        <part Name="StairsDown" Connected="false" PullDown="true" PullMessage="You fall into a deep chasm." GenericFall="true" JumpPrompt="It looks like an awfully long fall. Are you sure you want to jump?"/>
+        <removepart Name="Interesting" />
+        <tag Name="NoAutowalk" />
+        <part Name="IlluminatiSwag_Monsters_BurrowerPitMaterial"/>
+        <tag Name="PaintedWallAtlas" Value="Assets_Content_Textures_Walls_" />
+        <tag Name="PaintedWallExtension" Value=".png" />
+    </object> -->
+    <object Name="IlluminatiSwag_Monsters_PrimordialJell" Inherits="BaseOoze">
+        <part Name="Corpse" CorpseChance="0" />
+        <part Name="Render" DisplayName="{{c|primordial jell}}" RenderString="j" ColorString="&amp;c" />
+        <stat Name="Level" Value="30" />
+        <stat Name="AV" Value="6" />
+        <stat Name="Hitpoints" Value="140" />
+        <inventoryobject Blueprint="IlluminatiSwag_Monsters_SoupyPseudopod" Number="2" />
+        <part Name="Description" Short="A glassy membrane encases a world in miniature. Within its bulk, inchoate lifeforms coagulate and dissolve in a million frantic exertions of life's will to be." />
+        <skill Name="Cudgel" />
+        <skill Name="Cudgel_Bludgeon" />
+        <property Name="Role" Value="Brute" />
+        <part Name="LiquidBurst" EelChance="0" Liquid="IlluminatiSwag_Monsters_PrimordialPuddle" />
+        <!-- <part Name="LightSource" Lit="true" Radius="6" /> -->
+        <tag Name="BleedLiquid" Value="proteangunk-1000" />
+        <tag Name="BleedColor" Value="&amp;c" />
+        <tag Name="BleedPrefix" Value="&amp;csoupy" />
+    </object>
+    <object Name="IlluminatiSwag_Monsters_SoupyPseudopod" Inherits="Base Pseudopod">
+        <part Name="Render" DisplayName="{{c|soupy pseudopod}}" />
+        <part Name="MeleeWeapon" HitBonus="6" MaxStrengthBonus="99" BaseDamage="6d4" Skill="Cudgel" Stat="Strength" />
+    </object>
+    <object Name="IlluminatiSwag_Monsters_PrimordialPuddle" Inherits="Water">
+        <part Name="LiquidVolume" MaxVolume="-1" Volume="750" InitialLiquid="proteangunk-1000" />
+        <part Name="Physics" FlameTemperature="5000" VaporTemperature="9000" />
+    </object>
+    <object Name="IlluminatiSwag_Monsters_KrakenPool" Inherits="Water">
+        <part Name="LiquidVolume" MaxVolume="-1" Volume="10" StartVolume="10d10" InitialLiquid="blood-500,putrid-300,acid-100" />
+    </object>
+</objects>
