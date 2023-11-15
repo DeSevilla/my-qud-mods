@@ -28,7 +28,7 @@ namespace XRL.World.Parts {
                         Attacker: ParentObject,
                         Defender: looker, 
                         Command: "Terrify Intimidate",
-                        Dice: "4d10",
+                        Dice: "5d10",
                         Type: 8388610,
                         Magnitude: "2d8".RollCached(),
                         AttackModifier: attackModifier);

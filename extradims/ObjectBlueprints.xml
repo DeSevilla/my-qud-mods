@@ -1,0 +1,12 @@
+<objects>
+    <object Name="Monad" Load="Merge">
+        <mutation Name="IlluminatiSwag_Extradim_ActiveSwap"/>
+    </object>
+    <object Name="Glowfish" Load="Merge">
+        <part Name="IlluminatiSwag_Extradim_LookSwap"/>
+    </object>
+    <object Name="Glowpad" Load="Merge">
+        <mutation Name="IlluminatiSwag_Extradim_ActiveSwap"/>
+    </object>
+</objects>
+ 

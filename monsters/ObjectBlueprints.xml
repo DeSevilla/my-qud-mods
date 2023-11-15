@@ -28,15 +28,17 @@
     </object>
     <object Name="IlluminatiSwag_Monsters_TITD_Tentacle" Inherits="NaturalWeapon">
         <part Name="Render" DisplayName="tentacle"/>
-        <part Name="MeleeWeapon" BaseDamage="2d7" Skill="LongBlades" Stat="Strength" Slot="Arm"/>
+        <part Name="MeleeWeapon" BaseDamage="3d7" Skill="LongBlades" Stat="Strength" Slot="Arm"/>
         <part Name="LatchesOn" InitialSaveTarget="27" InitialSaveStat="Agility" InitialSaveDifficultyStat="Agility" MoveSaveTarget="25" MoveSaveStat="Strength" MoveSaveDifficultyStat="Strength" BreakSaveTarget="25" BreakSaveStat="Strength" BreakSaveDifficultyStat="Strength" Duration="3d4" AutoAttackOnMove="false" AutoAttackOnMoveAway="false" AutoAttackPerTurn="true" BloodSpatterOnLatch="true" />
-        <part Name="ModRazored" Chance="4" />
+        <part Name="ModRazored" Chance="10" />
     </object>
     <object Name="IlluminatiSwag_Monsters_GirshKraken" Inherits="BaseWorm">
         <part Name="Render" DisplayName="girsh kraken" Tile="Creatures/sw_kraken.bmp" RenderString="W" ColorString="&amp;m"/>
         <part Name="Description" Short="A roiling mountain of twisted flesh glistens and churns with the unbound energy of the Gyre. Countless offspring chew their way out of =pronouns.possessive= putrid innards, which knit together even as they're torn open again."/>
         <part Name="Physics" Weight="40000"/>
         <part Name="Brain" Hostile="false" Factions="Girsh-100"/>
+        <part Name="Corpse" CorpseChance="100" CorpseBlueprint="IlluminatiSwag_Monsters_KrakenCorpse"/>
+        <part Name="LiquidBurst" EelChance="0" Liquid="IlluminatiSwag_Monsters_KrakenBurst" />
         <part Name="MentalShield"/>
         <stat Name="AV" Value="18"/>
         <stat Name="DV" Value="-10"/>
@@ -54,6 +56,9 @@
         <tag Name="Colossal"/>
         <inventoryobject Blueprint="Saltwurm_Crush" Number="1"/>
     </object>
+    <object Name="IlluminatiSwag_Monsters_KrakenCorpse" Inherits="PoisonGas">
+        <part Name="Gas" Density="2000"/>
+    </object>
     <object Name="IlluminatiSwag_Monsters_SightlessProphet" Inherits="Arch Dervish of the Sightless Way">
         <part Name="Render" DisplayName="prophet of the Sightless Way" Tile="Creatures/sw_stareye_esper.bmp" ColorString="&amp;r" DetailColor="C" Occluding="false"/>
         <part Name="Description" Short="=pronouns.Possessive= near-skeletal limbs trace arcs of unerring grace and precision, and the piercing, lightless glow of =pronouns.possessive= gaze shines through =pronouns.possessive= ornately embroidered blindfold. =pronouns.Subjective= =verb:have:afterpronoun= followed the Sightless Way beyond the limits of mere possibility, and spacetime constrains =pronouns.objective= no more."/>
@@ -63,6 +68,7 @@
         <mutation Name="Precognition" Level="7"/>
         <part Name="RandomMutations" Mental="3-4" Physical="0" MentalLevel="2-5" />
         <part Name="Preacher" Book="Illuminatiwag_Monsters_Prophet" Prefix="The prophet says, &amp;W'" Frozen="The prophet mumbles inaudibly, encased in ice." inOrder="false" ChatWait="200" />
+        <inventoryobject Blueprint="Psychic Meridian" Number="1" />
     </object>
     <object Name="IlluminatiSwag_Monsters_PitBurrower" Inherits="BaseWorm">
         <part Name="Render" DisplayName="blightcrawler" Tile="Creatures/sw_snakelite.bmp" RenderString="w" ColorString="&amp;y" DetailColor="r"/>
@@ -140,5 +146,8 @@
     </object>
     <object Name="IlluminatiSwag_Monsters_KrakenPool" Inherits="Water">
         <part Name="LiquidVolume" MaxVolume="-1" Volume="10" StartVolume="10d10" InitialLiquid="blood-500,putrid-300,acid-100" />
+    </object>
+    <object Name="IlluminatiSwag_Monsters_KrakenBurst" Inherits="Water">
+        <part Name="LiquidVolume" MaxVolume="-1" Volume="10" StartVolume="2000" InitialLiquid="blood-400,putrid-300,acid-300" />
     </object>
 </objects>
