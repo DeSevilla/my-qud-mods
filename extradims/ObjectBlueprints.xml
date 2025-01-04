@@ -1,6 +1,8 @@
 <objects>
     <object Name="Monad" Load="Merge">
-        <mutation Name="IlluminatiSwag_Extradim_ActiveSwap"/>
+        <mutation Name="IlluminatiSwag_Extradim_ActiveSwap" 
+            ApplyMessage="=subject.t= =verb:catch= =object.t= within =pronouns.possessive= monadic bind!"
+            RemoveMessage="=subject.t= inductively =verb:pattern-match= =pronouns.possessive= way out of =object.t's= mind."/>
     </object>
     <object Name="Glowfish" Load="Merge">
         <part Name="IlluminatiSwag_Extradim_LookSwap"/>

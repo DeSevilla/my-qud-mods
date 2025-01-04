@@ -1,8 +1,10 @@
+using System;
 using XRL.Messages;
 using XRL.UI;
 using XRL.World.AI;
 using XRL.World.Parts;
 using XRL.World.Parts.Mutation;
+using XRL;
 
 namespace XRL.World.Effects {
     public class BodySwapped : Effect
@@ -17,9 +19,9 @@ namespace XRL.World.Effects {
 
         public bool FromOriginalPlayerBody;
 
-        public string ApplyMessage = "Your mind is sucked into another body!";
+        public string ApplyMessage = "=subject.t's= mind swaps bodies with =object.t=!";
 
-        public string RemoveMessage = "Your mind returns to your body!";
+        public string RemoveMessage = "=object.t's= mind returns to =objpronouns.possessive= body.";
 
         public BodySwapped()
         {
@@ -33,9 +35,9 @@ namespace XRL.World.Effects {
             if (ApplyMessage != null) {
                 this.ApplyMessage = ApplyMessage;
             }
-            else {
-                this.ApplyMessage = "Your mind is sucked into the body of " + OtherBody.DefiniteArticle() + OtherBody.DisplayName + "!";
-            }
+            // else {
+            //     this.ApplyMessage = "Your mind is sucked into the body of {0}!";
+            // }
             if (RemoveMessage != null) {
                 this.RemoveMessage = RemoveMessage;
             }
@@ -73,31 +75,40 @@ namespace XRL.World.Effects {
             return "Bound within another creature's body.";
         }
 
-        public static void BodySwap(GameObject Source, GameObject Target, string Message) {
-            Brain otherBrain = Source.pBrain.DeepCopy(Target) as Brain;
-            otherBrain.InitFromFactions();
-            // Brain thisBrain = Target.pBrain.DeepCopy(Source) as Brain;
+        public static void BodySwap(GameObject Source, GameObject Target, string Message = null) {
+            Brain targetBrain = Target.pBrain.DeepCopy(Target) as Brain;
+            targetBrain.InitFromFactions(); // until deepcopy is fixed we'll do it manually
+            // Brain thisBrain = Source.pBrain.DeepCopy(Target) as Brain;
             GameObject newPlayerBody = null;
-            if (Source.IsPlayer()) {
-                newPlayerBody = Target;
-            }
-            else if (Target.IsPlayer()) {
+            if (Target.IsPlayer()) {
                 newPlayerBody = Source;
+            }
+            else if (Source.IsPlayer()) {
+                newPlayerBody = Target;
             }
             if (newPlayerBody != null) {
                 SoundManager.PlaySound(Clip: "spooky", Effect: SoundRequest.SoundEffectType.FullPanRightToLeft);
-                GameManager.Instance.Spin = 4f;
+                GameManager.Instance.Spin = 2f;
                 DeepDream.TransitionIn(Options.ModernUI ? 2f : 0f);
+                Popup.Show(GameText.VariableReplace(Message: Message, Subject: Source, Object: Target));
                 The.Game.Player.Body = newPlayerBody;
                 // if (!Options.ModernUI)
 				// {
 				// 	DeepDream.ClassicFade();
 				// }
-                Popup.Show(Message);
+                // Popup.Show(String.Format(Message, newPlayerBody.DefiniteArticle() + newPlayerBody.DisplayName));
+                // if (!Return && ApplyMessage != null) {
+                //     Popup.Show(GameText.VariableReplace(Message: Message, Subject: Source, Object: Target));
+                //     // Popup.Show(Source.Poss("mind") + " is transferred to " + Target.Poss("body") + "!");
+                // }
+                // else if (Return && ReturnMessage != null) {
+                //     Popup.Show(GameText.VariableReplace(Message: ApplyMessage, Subject: Source, Object: Target));
+                //     // Popup.Show(Source.Poss("mind") + " returns to " + Target.Poss("body") + ".");
+                // }
             }
-            GiveAffiliations(Source, Target, Target.pBrain);
-            GiveAffiliations(Target, Source, otherBrain);
-            SwapConversations(Target, Source);
+            GiveAffiliations(Target, Source, Source.pBrain);
+            GiveAffiliations(Source, Target, targetBrain);
+            SwapConversations(Source, Target);
         }
 
         public static void GiveAffiliations(GameObject Target, GameObject Source, Brain SourceBrain) {
@@ -139,7 +150,7 @@ namespace XRL.World.Effects {
                 if (!OtherBody.ApplyEffect(new BodySwapped(OtherBody: Object, Duration: Effect.DURATION_INDEFINITE, Primary: false))) {
                     return false;
                 }
-                BodySwap(Object, OtherBody, ApplyMessage);
+                BodySwap(Source: OtherBody, Target: Object, Message: ApplyMessage);
             }
             return base.Apply(Object);
         }
@@ -155,9 +166,9 @@ namespace XRL.World.Effects {
 
         public override void Remove(GameObject Object) {
             Object.PullDown();
-            if (GameObject.validate(ref OtherBody) && !OtherBody.IsNowhere() && !Metempsychosis) {
+            if (GameObject.Validate(ref OtherBody) && !OtherBody.IsNowhere() && !Metempsychosis) {
                 if (Primary) {
-                    BodySwap(Object, OtherBody, RemoveMessage);
+                    BodySwap(Source: Object, Target: OtherBody, Message: RemoveMessage);
                     OtherBody.RemoveEffect(IsOurTargetEffect);
                 }
                 OtherBody.AwardXP(XPAwarded);

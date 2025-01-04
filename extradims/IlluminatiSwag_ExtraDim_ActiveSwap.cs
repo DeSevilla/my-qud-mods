@@ -1,5 +1,6 @@
 using System;
 using XRL.UI;
+using XRL.Rules;
 using XRL.World.Effects;
 
 namespace XRL.World.Parts.Mutation {
@@ -8,6 +9,10 @@ namespace XRL.World.Parts.Mutation {
     public class IlluminatiSwag_Extradim_ActiveSwap : BaseMutation
     {
         public static readonly string COMMAND_NAME = "CommandIlluminatiSwagExtraDimSwapBody";
+
+        public string ApplyMessage = null;
+
+        public string RemoveMessage = null;
 
         public IlluminatiSwag_Extradim_ActiveSwap() {
             DisplayName = "Swap Body";
@@ -37,7 +42,7 @@ namespace XRL.World.Parts.Mutation {
 
         public override bool HandleEvent(AIGetOffensiveAbilityListEvent E)
         {
-            if (E.Distance <= 1 && IsMyActivatedAbilityAIUsable(ActivatedAbilityID) && GameObject.validate(E.Target) 
+            if (E.Distance <= 1 && IsMyActivatedAbilityAIUsable(ActivatedAbilityID) && GameObject.Validate(E.Target) 
                     && CheckRealityDistortionAdvisability(Object: E.Actor, Cell: E.Target.CurrentCell, Actor: E.Actor, Mutation: this)) {
                 E.Add(COMMAND_NAME);
             }
@@ -67,7 +72,7 @@ namespace XRL.World.Parts.Mutation {
                         if (obj.GetPart("MentalMirror") is MentalMirror mirror && mirror.CheckActive()) {
                             mirror.Activate();
                             mirror.ReflectMessage(obj);
-                            target = ParentObject;
+                            ParentObject.ApplyEffect(new Confused(Rules.Stat.Roll("3d6"), Level: Level, MentalPenalty: Level));
                         }
                         else {
                             target = obj;
@@ -128,7 +133,8 @@ namespace XRL.World.Parts.Mutation {
                 if (target == null) {
                     return false;
                 }
-                if (!target.ApplyEffect(new BodySwapped(OtherBody: ParentObject, Duration: 100, Primary: true))) {
+                if (!target.ApplyEffect(new BodySwapped(OtherBody: ParentObject, Duration: 100, Primary: true,
+                                                        ApplyMessage: ApplyMessage, RemoveMessage: RemoveMessage))) {
                     return false;
                 }
                 CooldownMyActivatedAbility(ActivatedAbilityID, GetCooldownTurns(base.Level));
