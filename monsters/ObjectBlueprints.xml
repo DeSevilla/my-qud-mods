@@ -4,23 +4,23 @@
         <stat Name="AV" Value="15" />
         <stat Name="DV" Value="5" />
         <stat Name="Level" Value="40" />
-        <stat Name="Hitpoints" Value="600" />
+        <stat Name="Hitpoints" Value="250" />
         <stat Name="Ego" Value="24" />
         <part Name="Brain" Hostile="true" Factions="Strangers-100,Girsh-100" />
         <part Name="MentalShield" />
         <inventoryobject Blueprint="Agolzvuv_Foreleg_Barbs" Number="2" />
         <inventoryobject Blueprint="IlluminatiSwag_Monsters_TITD_Tentacle" Number="2" />
-        <part Name="Description" Short="Beneath the cloak of merciful shadow skulks a specimen of unparalleled hideousness. The eye refuses to grasp =pronouns.subjective=; the mind fails to encompass =pronouns.subjective=; the limbic system is washed away by a geologic eon of primal terror." />
+        <part Name="Description" Short="Beneath a cloak of merciful shadow skulks a specimen of unparalleled hideousness. The eye refuses to grasp =pronouns.subjective=; the mind fails to encompass =pronouns.subjective=; the limbic system is washed away by a geologic eon of primal terror." />
         <skill Name="LongBlades" />
         <skill Name="LongBladesProficiency" />
         <skill Name="LongBladesLunge" />
         <skill Name="LongBladesSwipe" />
         <skill Name="LongBladesImprovedAggressiveStance" />
         <skill Name="LongBladesImprovedDefensiveStance" />
-        <skill Name="Dual_Wield" />
-        <skill Name="Dual_Wield_Offhand_Strikes" />
-        <skill Name="Dual_Wield_Ambidexterity" />
-        <skill Name="Dual_Wield_Two_Weapon_Fighting" />
+        <skill Name="Multiweapon_Fighting" />
+        <skill Name="Multiweapon_Proficiency" />
+        <skill Name="Multiweapon_Expertise" />
+        <skill Name="Multiweapon_Mastery" />
         <skill Name="Persuasion_Intimidate" />
         <property Name="Role" Value="Brute" />
         <part Name="Blackout" Radius="5" />
@@ -30,11 +30,11 @@
         <part Name="Render" DisplayName="tentacle"/>
         <part Name="MeleeWeapon" BaseDamage="3d7" Skill="LongBlades" Stat="Strength" Slot="Arm"/>
         <part Name="LatchesOn" InitialSaveTarget="27" InitialSaveStat="Agility" InitialSaveDifficultyStat="Agility" MoveSaveTarget="25" MoveSaveStat="Strength" MoveSaveDifficultyStat="Strength" BreakSaveTarget="25" BreakSaveStat="Strength" BreakSaveDifficultyStat="Strength" Duration="3d4" AutoAttackOnMove="false" AutoAttackOnMoveAway="false" AutoAttackPerTurn="true" BloodSpatterOnLatch="true" />
-        <part Name="ModRazored" Chance="10" />
+        <part Name="ModSerrated" Chance="10" />
     </object>
     <object Name="IlluminatiSwag_Monsters_GirshKraken" Inherits="BaseWorm">
         <part Name="Render" DisplayName="girsh kraken" Tile="Creatures/sw_kraken.bmp" RenderString="W" ColorString="&amp;m"/>
-        <part Name="Description" Short="A roiling mountain of twisted flesh glistens and churns with the unbound energy of the Gyre. Countless offspring chew their way out of =pronouns.possessive= putrid innards, which knit together even as they're torn open again."/>
+        <part Name="Description" Short="A roiling mountain of numen-twisted flesh glistens and churns with the unbound energy of the Gyre. Countless offspring chew their way out of =pronouns.possessive= putrid innards, which knit together even as they're torn open again."/>
         <part Name="Physics" Weight="40000"/>
         <part Name="Brain" Hostile="false" Factions="Girsh-100"/>
         <part Name="Corpse" CorpseChance="100" CorpseBlueprint="IlluminatiSwag_Monsters_KrakenCorpse"/>
@@ -50,7 +50,7 @@
         <part Name="Consumer"/>
         <part Name="SlowDangerousMovement" LinkedToConsumer="true" PrepMessageSelf="You widen your mouth in preparation to move =dirward=." PrepMessageOther="=subject.T's= mouth widens!" />
         <part Name="AIWanderingJuggernaut"/>
-        <part Name="LeavesTrail" TrailChance="75" TrailPopTable="IlluminatiSwag_Monsters_GirshKrakenOffspring" OnEnter="false"/>
+        <part Name="LeavesTrail" TrailChance="75" TrailBlueprint="@IlluminatiSwag_Monsters_GirshKrakenOffspring" OnEnter="false"/>
         <tag Name="NoCure"/>
         <property Name="Role" Value="Brute"/>
         <tag Name="Colossal"/>
@@ -62,17 +62,17 @@
     <object Name="IlluminatiSwag_Monsters_SightlessProphet" Inherits="Arch Dervish of the Sightless Way">
         <part Name="Render" DisplayName="prophet of the Sightless Way" Tile="Creatures/sw_stareye_esper.bmp" ColorString="&amp;r" DetailColor="C" Occluding="false"/>
         <part Name="Description" Short="=pronouns.Possessive= near-skeletal limbs trace arcs of unerring grace and precision, and the piercing, lightless glow of =pronouns.possessive= gaze shines through =pronouns.possessive= ornately embroidered blindfold. =pronouns.Subjective= =verb:have:afterpronoun= followed the Sightless Way beyond the limits of mere possibility, and spacetime constrains =pronouns.objective= no more."/>
-        <stat Name="Ego" Boost="7"/>
+        <stat Name="Ego" Boost="2"/>
         <stat Name="Level" Value="42"/>
         <stat Name="Agility" Boost="6"/>
         <mutation Name="Precognition" Level="7"/>
         <part Name="RandomMutations" Mental="3-4" Physical="0" MentalLevel="2-5" />
-        <part Name="Preacher" Book="Illuminatiwag_Monsters_Prophet" Prefix="The prophet says, &amp;W'" Frozen="The prophet mumbles inaudibly, encased in ice." inOrder="false" ChatWait="200" />
+        <part Name="Preacher" Book="IlluminatiSwag_Monsters_Prophet" Prefix="The prophet says, {{W|'" Frozen="The prophet mumbles inaudibly, encased in ice." inOrder="false" ChatWait="100" />
         <inventoryobject Blueprint="Psychic Meridian" Number="1" />
     </object>
     <object Name="IlluminatiSwag_Monsters_PitBurrower" Inherits="BaseWorm">
         <part Name="Render" DisplayName="blightcrawler" Tile="Creatures/sw_snakelite.bmp" RenderString="w" ColorString="&amp;y" DetailColor="r"/>
-        <part Name="Description" Short="A mouth of grinding gears and a jagged chrome carapace tear through solid stone like chalk, while rear vents spew thick plumes of noxious byproducts. Long ages have passed since the Eaters of Earth abandoned these caverns, but in the gnawed depths their worm dieth not."/>
+        <part Name="Description" Short="A mouth of grinding augurs and a jagged chrome carapace tear through solid stone like chalk, while rear vents spew thick plumes of noxious byproducts. Eons have passed since the Eaters of Earth abandoned these caverns, but in the gnawed depths their worm dieth not."/>
         <part Name="Robot"/>
         <stat Name="Level" Value="30"/>
         <stat Name="AV" Value="12"/>
@@ -80,7 +80,7 @@
         <inventoryobject Blueprint="IlluminatiSwag_Monsters_PitBurrower_Crush" Number="1"/>
         <property Name="Role" Value="Controller" />
         <mutation Name="Burrowing" Level="5"/>
-        <part Name="LeaveTrailWhileHasEffect" TrailObject="IlluminatiSwag_Monsters_Miasma500" Effect="Burrowed"/>
+        <part Name="LeaveTrailWhileHasEffect" Specification="IlluminatiSwag_Monsters_Miasma500" Effect="Burrowed"/>
         <tag Name="Restless"/>
         <tag Name="NoCure"/>
         <tag Name="SeveredHeadBlueprint" Value="RobotHead8" />

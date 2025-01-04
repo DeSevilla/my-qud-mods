@@ -1,10 +1,14 @@
 using HarmonyLib;
+using System;
+using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Collections.Generic;
 using XRL;
+using XRL.UI;
 using XRL.World;
 using XRL.World.Parts;
+using XRL.World.Parts.Mutation;
 using XRL.World.Anatomy;
 
 namespace AnimateStatue.HarmonyPatches {
@@ -13,10 +17,19 @@ namespace AnimateStatue.HarmonyPatches {
     class RandomStatuePatch {
         [HarmonyPostfix]
         static void Postfix(RandomStatue __instance, GameObject creatureObject) {
-            __instance.ParentObject.SetStringProperty("Animatable", "Yes"); //this may be unnecessary
-            __instance.ParentObject.SetStringProperty("BodyType", creatureObject.Body.Anatomy);
-            if (!__instance.ParentObject.HasTagOrStringProperty("AnimateStatue_BodyCategory")) {
-                __instance.ParentObject.SetStringProperty("AnimateStatue_BodyCategory", "Stone");
+            // Popup.Show(creatureObject.Does("exist"));
+            if (creatureObject.Body != null) {
+                __instance.ParentObject.SetStringProperty("Animatable", "Yes"); //this may be unnecessary
+                __instance.ParentObject.SetStringProperty("BodyType", creatureObject.Body.Anatomy);
+                if (!__instance.ParentObject.HasTagOrStringProperty("AnimateStatue_BodyCategory")) {
+                    __instance.ParentObject.SetStringProperty("AnimateStatue_BodyCategory", "Stone");
+                }
+                var creatureMutations = creatureObject.GetPart<Mutations>()?.MutationList.Where(mutation => mutation.IsPhysical());
+                if (creatureMutations?.Any() == true) {
+                    var mutationNames = creatureMutations.Select(mutation => mutation.GetMutationClass());
+                    string mutations = String.Join(",", mutationNames);
+                    __instance.ParentObject.SetStringProperty("AnimateStatue_AnimatedMutations", mutations);
+                }
             }
         }
     }
@@ -49,6 +62,17 @@ namespace AnimateStatue.HarmonyPatches {
             if (cat != "a") {
                 var code = BodyPartCategory.GetCode(cat);
                 frankenObject.Body.CategorizeAll(code);
+            }
+            var mutationList = frankenObject.GetPropertyOrTag("AnimateStatue_AnimatedMutations", "");
+            var creatureMutations = frankenObject.GetPart<Mutations>();
+            if (!string.IsNullOrEmpty(mutationList) && creatureMutations != null) {
+                string[] mutationNames = mutationList.Split(",");
+                foreach (string @name in mutationNames) {
+                    // var entry = MutationFactory.GetMutationEntryByName(name);
+                    // if (entry.Category.Name == "Physical") {
+                    creatureMutations.AddMutation(name, 1); //this doesn't handle levels to avoid annoying string parsing
+                    // }
+                }
             }
        }
     }

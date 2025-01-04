@@ -9,10 +9,10 @@ namespace XRL.World.Parts {
     [Serializable]
     public class IlluminatiSwag_Monsters_Terrifying : IPart
     {
-        public override void Register(GameObject Object)
+        public override void Register(GameObject Object, IEventRegistrar Registrar)
         {
-            Object.RegisterPartEvent(this, "AfterLookedAt");
-            base.Register(Object);
+            Registrar.Register("AfterLookedAt");
+            base.Register(Object, Registrar);
         }
 
         public override bool FireEvent(Event E)

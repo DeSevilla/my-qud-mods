@@ -33,7 +33,12 @@
     <population Name="IlluminatiSwag_Monsters_GirshKrakenOffspring">
         <object Number="1" Blueprint="IlluminatiSwag_Monsters_KrakenPool"/>
         <group Name="Offspring" Chance="80" Style="pickone">
-            <object Weight="10" Number="2-3" Blueprint="Girshling"/>
+            <object Weight="3" Number="2-3" Blueprint="Girshling"/>
+            <object Weight="1" Number="2-3" Blueprint="Rank Girshling"/>
+            <object Weight="2" Number="2-3" Blueprint="Cryptic Girshling"/>
+            <object Weight="2" Number="2-3" Blueprint="Conjoined Girshling"/>
+            <object Weight="2" Number="2-3" Blueprint="Burrowing Girshling"/>
+            <object Weight="1" Number="2-3" Blueprint="Plasmatic Girshling"/>
             <object Weight="10" Number="2-3" Blueprint="Agolmaggot"/>
             <object Weight="5" Number="1" Blueprint="Agolfly"/>
             <object Weight="5" Number="1" Blueprint="Agolzvuv"/>
